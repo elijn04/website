@@ -1,9 +1,0 @@
-User-agent: *
-Allow: /
-
-# Disallow any potential admin areas
-Disallow: /admin/
-Disallow: /dashboard/
-
-# Sitemap location
-Sitemap: https://flick2split.com/sitemap.xml 

@@ -1,8 +1,18 @@
+/* Reset the default styles that might be causing issues */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0f172a; /* This matches the flick-blue-dark color */
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+}
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
 }
 
 .logo {
@@ -40,3 +50,5 @@
 .read-the-docs {
   color: #888;
 }
+
+/* Keep other styles as needed */
