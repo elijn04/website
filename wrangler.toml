@@ -1,13 +1,10 @@
 name = "website"
-type = "javascript"
 account_id = "068db3d3e9853c780e161269a3233ebf"
 workers_dev = true
 route = "flick2split.com/*"
 
 [site]
 bucket = "dist"
-entry-point = "workers-site"
 
 [build]
-command = "npm run build"
-upload.format = "service-worker" 
+command = "npm run build" 
