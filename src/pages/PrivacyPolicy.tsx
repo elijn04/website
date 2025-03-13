@@ -89,6 +89,35 @@ const PrivacyPolicy = () => {
                 We may also collect information that Your browser sends whenever You visit our Service or when You access the Service by or through a mobile device.
               </p>
               
+              <h3 className="text-xl font-semibold text-flick-white mt-8 mb-4">Device Permissions and Data Usage</h3>
+              
+              <h4 className="text-lg font-semibold text-flick-white mt-6 mb-3">Camera Access</h4>
+              <p className="text-white/80 mb-4">
+                Our app requests access to your device's camera to enable you to take photos of bills and receipts directly within the app. This feature is used specifically for scanning and analyzing receipts to automatically extract item details and prices for bill splitting purposes. We do not store your photos beyond what's necessary for the functioning of the service, and we do not share your photos without your consent.
+              </p>
+              
+              <h4 className="text-lg font-semibold text-flick-white mt-6 mb-3">Photo Library Access</h4>
+              <p className="text-white/80 mb-4">
+                Our app may request access to your device's photo library to allow you to select and upload images of existing receipts or bills for processing. This access is solely for the purpose of letting you choose which receipt images to import for bill splitting. We do not access, browse, store, or share photos from your library beyond those you explicitly select for uploading to our service.
+              </p>
+              
+              <h4 className="text-lg font-semibold text-flick-white mt-6 mb-3">How We Use This Data</h4>
+              <p className="text-white/80 mb-4">
+                Photos of receipts and bills uploaded through our app are:
+              </p>
+              <ul className="list-disc pl-6 space-y-2 text-white/80 mb-6">
+                <li>Processed using optical character recognition (OCR) to extract relevant bill information</li>
+                <li>Used to generate itemized lists for bill splitting among friends</li>
+                <li>Stored securely and associated with your account for reference until you choose to delete them</li>
+                <li>Never shared with third parties for advertising or marketing purposes</li>
+                <li>Deleted from our servers upon your request or when no longer needed for providing our service</li>
+              </ul>
+              
+              <h4 className="text-lg font-semibold text-flick-white mt-6 mb-3">Your Control Over Your Data</h4>
+              <p className="text-white/80 mb-6">
+                You can revoke camera or photo library permissions at any time through your device settings. You can also delete previously uploaded receipts and associated data from our servers through the app's settings menu. If you choose to disable these permissions, features requiring camera or photo access will not be available, but you can still use other aspects of the app.
+              </p>
+              
               <h4 className="text-lg font-semibold text-flick-white mt-6 mb-3">Use of Your Personal Data</h4>
               <p className="text-white/80 mb-4">
                 The Company may use Personal Data for the following purposes:

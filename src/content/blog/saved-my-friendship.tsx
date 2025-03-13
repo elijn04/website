@@ -2,7 +2,7 @@ import React from 'react';
 import { BlogPost } from '@/types/blog';
 
 export const post: BlogPost = {
-  title: "How FLICK2SPLIT Saved My Friendship",
+  title: "How FLICK2SPLIT Saved My Friendship Group | Bill Splitting Tips",
   excerpt: "A real story from one of our users about how our app helped preserve a friendship that was strained by money issues.",
   date: "April 28, 2023",
   imageUrl: "https://images.unsplash.com/photo-1543269664-56d93c1b41a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80",

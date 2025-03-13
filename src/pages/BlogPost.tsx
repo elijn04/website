@@ -132,6 +132,13 @@ const BlogPost = () => {
               </div>
             </div>
             
+            <img 
+              src={metadata.imageUrl} 
+              alt="Group of friends happily splitting a restaurant bill using FLICK2SPLIT app"
+              loading="lazy"
+              className="image-blur-load"
+            />
+            
             <Content />
           </div>
         </div>
