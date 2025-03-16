@@ -12,7 +12,7 @@ import TermsOfService from '@/pages/TermsOfService';
 import CookiePolicy from '@/pages/CookiePolicy';
 import GDPR from '@/pages/GDPR';
 import BlogPost from "./pages/BlogPost";
-import { HelmetProvider } from 'react-helmet-async';
+import { HelmetProvider, Helmet } from 'react-helmet-async';
 
 const queryClient = new QueryClient();
 
@@ -35,6 +35,44 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
+        <Helmet>
+          <script type="application/ld+json">
+            {`
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": "FLICK2SPLIT",
+                "url": "https://flick2split.com",
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "https://flick2split.com/search?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                }
+              }
+            `}
+          </script>
+          <script type="application/ld+json">
+            {`
+              {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "name": "FLICK2SPLIT",
+                "url": "https://flick2split.com",
+                "logo": "https://flick2split.com/logo.png",
+                "sameAs": [
+                  "https://twitter.com/flick2split",
+                  "https://facebook.com/flick2split",
+                  "https://instagram.com/flick2split"
+                ],
+                "contactPoint": {
+                  "@type": "ContactPoint",
+                  "email": "contact@flick2split.com",
+                  "contactType": "customer service"
+                }
+              }
+            `}
+          </script>
+        </Helmet>
       </TooltipProvider>
     </HelmetProvider>
   </QueryClientProvider>

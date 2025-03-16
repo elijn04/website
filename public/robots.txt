@@ -1,9 +1,20 @@
 User-agent: *
 Allow: /
 
-# Disallow any potential admin areas
+# Disallow admin areas
 Disallow: /admin/
 Disallow: /dashboard/
+Disallow: /login/
+Disallow: /wp-admin/
+
+# Block specific files
+Disallow: /*.json$
+Disallow: /*.xml$
+Disallow: /*.txt$
+
+# Allow sitemap and important files
+Allow: /sitemap.xml
+Allow: /robots.txt
 
 # Sitemap location
 Sitemap: https://flick2split.com/sitemap.xml 

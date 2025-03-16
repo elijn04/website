@@ -3,6 +3,11 @@ import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Calendar, User } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { Helmet } from 'react-helmet-async';
+import SeoHead from '@/components/SeoHead';
+import OptimizedImage from '@/components/OptimizedImage';
+import RelatedPosts from '@/components/RelatedPosts';
+import BreadcrumbSchema from '@/components/BreadcrumbSchema';
 
 // This is a dynamic import function to load blog content
 const importBlogPost = async (slug: string) => {
@@ -35,6 +40,14 @@ const BlogPost = () => {
         if (postData) {
           setPost(postData);
           setError(false);
+          
+          // Track page view for analytics
+          if (typeof window !== 'undefined' && window.gtag) {
+            window.gtag('event', 'page_view', {
+              page_title: postData.metadata.title,
+              page_path: `/blog/${slug}`
+            });
+          }
         } else {
           setError(true);
         }
@@ -74,9 +87,59 @@ const BlogPost = () => {
   }
   
   const { Content, metadata } = post;
+  const canonicalUrl = `https://flick2split.com/blog/${slug}`;
   
   return (
     <div className="min-h-screen bg-flick-blue">
+      <SeoHead
+        title={`${metadata.title} | FLICK2SPLIT`}
+        description={metadata.excerpt}
+        canonicalUrl={canonicalUrl}
+        ogImage={metadata.imageUrl}
+        ogType="article"
+        keywords={metadata.keywords || []}
+      />
+      
+      <Helmet>
+        <script type="application/ld+json">
+          {`
+            {
+              "@context": "https://schema.org",
+              "@type": "Article",
+              "headline": "${metadata.title}",
+              "image": "${metadata.imageUrl}",
+              "author": {
+                "@type": "Person",
+                "name": "${metadata.author.name}"
+              },
+              "publisher": {
+                "@type": "Organization",
+                "name": "FLICK2SPLIT",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://flick2split.com/logo.png"
+                }
+              },
+              "datePublished": "${metadata.date}",
+              "dateModified": "${metadata.date}",
+              "description": "${metadata.excerpt}",
+              "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "${canonicalUrl}"
+              }
+            }
+          `}
+        </script>
+      </Helmet>
+      
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://flick2split.com/' },
+          { name: 'Blog', url: 'https://flick2split.com/blog' },
+          { name: metadata.title, url: canonicalUrl }
+        ]}
+      />
+      
       <Navbar />
       
       {/* Hero Section */}
@@ -123,8 +186,9 @@ const BlogPost = () => {
             <div className="flex items-center mb-8 pb-8 border-b border-white/10">
               <img 
                 src={metadata.author.avatar} 
-                alt={metadata.author.name}
+                alt={`Photo of ${metadata.author.name}`}
                 className="w-12 h-12 rounded-full mr-4 object-cover"
+                loading="eager"
               />
               <div>
                 <h3 className="text-flick-white font-medium">{metadata.author.name}</h3>
@@ -132,14 +196,34 @@ const BlogPost = () => {
               </div>
             </div>
             
-            <img 
+            <OptimizedImage 
               src={metadata.imageUrl} 
-              alt="Group of friends happily splitting a restaurant bill using FLICK2SPLIT app"
-              loading="lazy"
-              className="image-blur-load"
+              alt={metadata.title}
+              className="w-full h-auto rounded-xl mb-8"
             />
             
             <Content />
+            
+            {/* Tags Section */}
+            {metadata.keywords && (
+              <div className="mt-8 pt-8 border-t border-white/10">
+                <h3 className="text-lg font-semibold text-flick-white mb-4">Related Topics</h3>
+                <div className="flex flex-wrap gap-2">
+                  {metadata.keywords.map((keyword: string, index: number) => (
+                    <Link 
+                      key={index}
+                      to={`/blog?tag=${encodeURIComponent(keyword)}`}
+                      className="bg-white/10 hover:bg-white/20 px-3 py-1 rounded-full text-sm text-white/80"
+                    >
+                      {keyword}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+            
+            {/* Related Posts */}
+            <RelatedPosts currentSlug={slug || ''} />
           </div>
         </div>
       </section>
