@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Camera, Upload, Calculator, Users, Clock, Bell, ArrowRight, Download, SplineIcon, SplitIcon, DivideCircleIcon, DivideIcon, Divide, LucideDivideSquare, Share2Icon, EyeOffIcon, EyeIcon } from 'lucide-react';
 import Navbar from '@/components/Navbar';
@@ -72,7 +71,7 @@ const Index = () => {
             <FeatureCard 
               icon={SplitIcon} 
               title="Group Splitting" 
-              description="Our algorithm fairly splits each person’s share, including tax and tip. No manual math needed!"
+              description="Our algorithm fairly splits each person's share, including tax and tip. No manual math needed!"
               delay={300}
             />
               <FeatureCard 
@@ -239,10 +238,15 @@ const Index = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <button className="btn-primary flex items-center justify-center gap-2">
+              <a 
+                href="https://apps.apple.com/us/app/flick2split/id6743105325" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn-primary flex items-center justify-center gap-2"
+              >
                 <Download size={20} />
                 Download for iOS
-              </button>
+              </a>
               <button className="btn-primary flex items-center justify-center gap-2">
                 <Download size={20} />
                 Download for Android
