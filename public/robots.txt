@@ -7,14 +7,10 @@ Disallow: /dashboard/
 Disallow: /login/
 Disallow: /wp-admin/
 
-# Block specific files
+# Block sensitive API files but ALLOW sitemap
 Disallow: /*.json$
-Disallow: /*.xml$
 Disallow: /*.txt$
-
-# Allow sitemap and important files
 Allow: /sitemap.xml
-Allow: /robots.txt
 
 # Sitemap location
-Sitemap: https://flick2split.com/sitemap.xml 
+Sitemap: https://flick2split.com/sitemap.xml
