@@ -1,7 +1,6 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import sharp from 'sharp';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const publicDir = path.join(__dirname, '../public');
@@ -17,6 +16,15 @@ if (!fs.existsSync(optimizedDir)) {
 const imageFiles = fs.readdirSync(imagesDir).filter(file => 
   /\.(jpg|jpeg|png)$/i.test(file) && !file.includes('optimized')
 );
+
+// Make image optimization fail gracefully if sharp isn't installed
+let sharp;
+try {
+  sharp = await import('sharp');
+} catch (e) {
+  console.log('Sharp package not found. Skipping image optimization.');
+  process.exit(0); // Exit successfully to continue the build
+}
 
 // Process images
 async function optimizeImages() {
