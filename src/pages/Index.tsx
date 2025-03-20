@@ -5,6 +5,7 @@ import Footer from '@/components/Footer';
 import HeroSection from '@/components/HeroSection';
 import FeatureCard from '@/components/FeatureCard';
 import BlogCard from '@/components/BlogCard';
+import { useToast } from "@/components/ui/use-toast";
 
 const Index = () => {
   const [isIntersecting, setIsIntersecting] = useState<{ [key: string]: boolean }>({
@@ -14,6 +15,8 @@ const Index = () => {
     blog: false,
     download: false
   });
+
+  const { toast } = useToast();
 
   useEffect(() => {
     const observerCallback = (entries: IntersectionObserverEntry[]) => {
@@ -247,7 +250,16 @@ const Index = () => {
                 <Download size={20} />
                 Download for iOS
               </a>
-              <button className="btn-primary flex items-center justify-center gap-2">
+              <button 
+                onClick={() => {
+                  toast({
+                    title: "Coming Soon!",
+                    description: "Android version is currently in development.",
+                    duration: 3000
+                  });
+                }}
+                className="btn-primary flex items-center justify-center gap-2"
+              >
                 <Download size={20} />
                 Download for Android
               </button>

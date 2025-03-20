@@ -50,7 +50,15 @@ const Navbar = () => {
             <NavLink to="/" label="Home" onClick={handleLinkClick} />
             <NavLink to="/how-to-use" label="How to Use" onClick={handleLinkClick} />
             <NavLink to="/blog" label="Blog" onClick={handleLinkClick} />
-            <Button className="bg-flick-yellow hover:bg-flick-yellow/90 text-flick-blue-dark font-medium">
+            <Button 
+              className="bg-flick-yellow hover:bg-flick-yellow/90 text-flick-blue-dark font-medium"
+              onClick={() => {
+                const downloadSection = document.getElementById('download');
+                if (downloadSection) {
+                  downloadSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+            >
               Download App
             </Button>
           </nav>
@@ -74,7 +82,15 @@ const Navbar = () => {
               <NavLink to="/" label="Home" mobile onClick={handleLinkClick} />
               <NavLink to="/how-to-use" label="How to Use" mobile onClick={handleLinkClick} />
               <NavLink to="/blog" label="Blog" mobile onClick={handleLinkClick} />
-              <Button className="bg-flick-yellow hover:bg-flick-yellow/90 text-flick-blue-dark font-medium w-full">
+              <Button 
+                className="bg-flick-yellow hover:bg-flick-yellow/90 text-flick-blue-dark font-medium w-full"
+                onClick={() => {
+                  const downloadSection = document.getElementById('download');
+                  if (downloadSection) {
+                    downloadSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+              >
                 Download App
               </Button>
             </nav>
